@@ -1,0 +1,11 @@
+<div style="padding:12px;">
+  <ng-container *ngIf="selected$ | async as id; else canvasProps">
+    <app-text-props *ngIf="kind==='text'" [id]="id"/>
+    <app-barcode-props *ngIf="kind==='barcode'" [id]="id"/>
+  </ng-container>
+
+  <!-- ✅ show canvas properties when nothing is selected -->
+  <ng-template #canvasProps>
+    <app-canvas-props></app-canvas-props>
+  </ng-template>
+</div>

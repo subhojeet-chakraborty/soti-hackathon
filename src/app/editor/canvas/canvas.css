@@ -1,0 +1,10 @@
+.canvas-wrap {
+  background: #fff;
+  border: 1px solid #000;         /* black border */
+  border-radius: 10px;
+  box-shadow: var(--shadow);
+
+  /* actual resize handle */
+  resize: both;
+  overflow: auto;                  /* required for resize:both to show handle */
+}

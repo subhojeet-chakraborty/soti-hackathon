@@ -1,0 +1,15 @@
+<div style="display:flex; justify-content:center; align-items:center;">
+  <!-- Resizable wrapper becomes the size source of truth -->
+  <div
+    #wrap
+    class="canvas-wrap"
+    [style.width.px]="canvasWidth"
+    [style.height.px]="canvasHeight"
+    [style.minWidth.px]="MIN_W"
+    [style.minHeight.px]="MIN_H"
+    [style.maxWidth.px]="MAX_W"
+    [style.maxHeight.px]="MAX_H"
+  >
+    <canvas #fabricCanvas [attr.width]="canvasWidth" [attr.height]="canvasHeight"></canvas>
+  </div>
+</div>

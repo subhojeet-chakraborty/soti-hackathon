@@ -1,0 +1,46 @@
+<div style="display:flex; flex-direction:column; gap:8px">
+  <h4 style="margin:0; color:var(--muted); text-transform:uppercase; font-size:12px;">Text</h4>
+
+  <label style="font-size:13px; color:var(--muted)">Content</label>
+  <textarea
+    [value]="el?.content || ''"
+    (input)="setContent(($any($event.target)).value)"
+    [disabled]="el?.binding?.mode === 'dynamic'"
+    style="width:100%; min-height:60px; border:1px solid var(--border); border-radius:8px; padding:8px"
+  ></textarea>
+  <div *ngIf="el?.binding?.mode === 'dynamic'" style="font-size:12px; color:var(--muted)">
+    Content is controlled by data binding.
+  </div>
+
+  <label style="font-size:13px; color:var(--muted)">Font size</label>
+  <input type="number" min="8" max="96"
+         [value]="el?.style?.fontSize ?? 16"
+         (input)="setFontSize((($any($event.target)).value))"
+         style="width:100%; border:1px solid var(--border); border-radius:8px; padding:6px 8px"/>
+
+  <label style="font-size:13px; color:var(--muted)">Color</label>
+  <input type="color"
+         [value]="el?.style?.color || '#111827'"
+         (input)="setColor(($any($event.target)).value)"
+         style="width:48px; height:32px; border:none; background:transparent"/>
+
+  <div style="margin-top:8px; display:flex; gap:8px; align-items:center">
+    <label style="font-size:13px; color:var(--muted)">Binding</label>
+    <select
+      [value]="el?.binding?.mode || 'static'"
+      (change)="setBindingMode(($any($event.target)).value)"
+      style="flex:1; border:1px solid var(--border); border-radius:8px; padding:6px 8px">
+      <option value="static">Static</option>
+      <option value="dynamic">Dynamic</option>
+    </select>
+  </div>
+
+  <div *ngIf="el?.binding?.mode === 'dynamic'" style="display:flex; flex-direction:column; gap:6px">
+    <label style="font-size:13px; color:var(--muted)">Binding key</label>
+    <input type="text"
+           [value]="el?.binding?.key || ''"
+           (input)="setBindingKey(($any($event.target)).value)"
+           placeholder="customerName"
+           style="border:1px solid var(--border); border-radius:8px; padding:6px 8px"/>
+  </div>
+</div>
